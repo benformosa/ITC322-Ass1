@@ -1,0 +1,32 @@
+Ben Formosa
+Student No. 11429074
+
+ICT322 Assessment 1
+
+Manifest:
+README.txt				- this file
+src/BaseAccount.java	- superclass representing a bank account
+src/SavingsAccount.java	- class representing a Savings account
+src/ChequeAccount.java	- class representing a Chequeing account
+src/TestAccounts.java	- testing suite for BaseAccount and subclasses
+src/CreditLimit.java	- interface that supports storing a credit limit
+src/Interest.java		- interface that supports adding interest
+src/Withdrawable.java	- interface that supports withdrawals
+
+
+Building and Running
+*Build javadoc:
+		javadoc -d doc src/*
+*Compile
+		javac -classpath bin -sourcepath src -d bin src/*.java
+*Run
+		java -classpath bin TestAccounts
+		
+Explanation:
+
+TestAccounts requires determining what features the Account supports. The assingnment definition suggests using the instanceof operator.
+I decided that something like 'object instaceof Class' didn't make sense, when what I really wanted to know was the features available to that object, such as withdrawal. 
+Java interfaces would give me this functionality. I created some simple interfaces, most just defining one method. Then I can implement those interfaces in each class if they should contain that method.
+
+
+

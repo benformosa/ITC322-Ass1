@@ -3,5 +3,6 @@
  */
 public interface CreditLimit {
 	public double creditLimit = 0.0;
+
 	public boolean setCreditLimit(double limit);
 }
