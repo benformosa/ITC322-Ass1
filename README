@@ -23,6 +23,7 @@ Building and Running
 		java -classpath bin TestAccounts
 		
 Explanation:
+Implementing Comparable<T> requires defining the compareTo method. To do this for BaseAccount, I used String.compareTo with the owner's name as an argument. If the names are the same, the accounts will be sorted by acctnumber.
 
 TestAccounts requires determining what features the Account supports. The assingnment definition suggests using the instanceof operator.
 I decided that something like 'object instaceof Class' didn't make sense, when what I really wanted to know was the features available to that object, such as withdrawal. 

@@ -28,8 +28,11 @@ public abstract class BaseAccount implements Comparable<BaseAccount> {
 	 * alphabetical ordering by owner's name.
 	 */
 	public int compareTo(BaseAccount rhs) {
-		// use String's compareTo
-		return this.owner.compareTo(rhs.owner);
+		// use String's compareTo if the owners are not the same
+		if (! rhs.owner.equals(this.owner)) {
+			return this.owner.compareTo(rhs.owner);
+		}
+		return Integer.compare(this.acctNumber, rhs.acctNumber);
 	}
 
 	/**

@@ -74,6 +74,7 @@ public class TestAccounts {
 			System.out.println(list[i].owner + "\t" + list[i].acctNumber + "\t" + list[i] + "\t" + list[i].getClass().getName());
 		}
 		
+		System.out.println("###");
 		ChequeAccount sue = new ChequeAccount("Sue");
 		sue.deposit(20.0);
 		sue.acctNumber = 3;
