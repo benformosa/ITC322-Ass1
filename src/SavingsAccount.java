@@ -6,6 +6,12 @@
 public class SavingsAccount extends BaseAccount implements Withdrawable,
 		Interest {
 
+	/**
+	 * Construct a SavingsAccount Only uses the constructor from BaseAccount
+	 * 
+	 * @param owner
+	 *            This account owner's name
+	 */
 	public SavingsAccount(String owner) {
 		super(owner);
 	}
@@ -17,13 +23,15 @@ public class SavingsAccount extends BaseAccount implements Withdrawable,
 	 *            The interest rate to use
 	 * @return true if the operation was successful
 	 */
+	@Override
 	public boolean addInterest(double rate) {
 		// check for negative interest rate
 		if (rate < 0) {
 			return false;
 		}
 
-		// simple interest is the principal plus the given percentage of the principal
+		// simple interest is the principal plus the given percentage of the
+		// principal
 		this.balance += (this.balance * rate) / 100;
 		return true;
 	}
@@ -35,6 +43,7 @@ public class SavingsAccount extends BaseAccount implements Withdrawable,
 	 *            Amount to add
 	 * @return true if the operation was successful
 	 */
+	@Override
 	public boolean deposit(double amount) {
 		// check for negative amount
 		if (amount < 0) {
@@ -52,6 +61,7 @@ public class SavingsAccount extends BaseAccount implements Withdrawable,
 	 *            Amount to subtract
 	 * @return true if the operation was successful
 	 */
+	@Override
 	public boolean withdraw(double amount) {
 		// check for negative amount, amount greater than balance
 		if (amount < 0 || amount > this.balance) {

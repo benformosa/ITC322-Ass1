@@ -10,11 +10,13 @@ public class ChequeAccount extends BaseAccount implements Withdrawable,
 	static double TRANSACTION_CHARGE = 0.30;
 
 	/**
-	 * @param The
-	 *            account owner's name
+	 * Construct a ChequeAccount
+	 * 
+	 * @param name
+	 *            The account owner's name
 	 */
-	public ChequeAccount(String owner) {
-		super(owner);
+	public ChequeAccount(String name) {
+		super(name);
 		this.creditLimit = 0.0;
 	}
 
@@ -25,6 +27,7 @@ public class ChequeAccount extends BaseAccount implements Withdrawable,
 	 *            Amount to add
 	 * @return true if the operation was successful
 	 */
+	@Override
 	public boolean deposit(double amount) {
 		// check for negative amount
 		if (amount < 0) {
@@ -36,12 +39,35 @@ public class ChequeAccount extends BaseAccount implements Withdrawable,
 	}
 
 	/**
+	 * Returns true if the given object is the same as this object Based on
+	 * Eclipse automatically generated code.
+	 */
+	@Override
+	public boolean equals(Object rhs) {
+		if (this == rhs) {
+			return true;
+		}
+		if (!super.equals(rhs)) {
+			return false;
+		}
+		if (!(rhs instanceof ChequeAccount)) {
+			return false;
+		}
+		ChequeAccount other = (ChequeAccount) rhs;
+		if (Double.compare(this.balance, other.balance) != 0) {
+			return false;
+		}
+		return true;
+	}
+
+	/**
 	 * Set the credit limit on this account
 	 * 
-	 * @param credit
-	 *            limit to set
+	 * @param limit
+	 *            credit limit to set
 	 * @return false if the given credit limit cannot be set
 	 */
+	@Override
 	public boolean setCreditLimit(double limit) {
 		// check new credit limit is not negative
 		if (limit < 0) {
@@ -59,6 +85,7 @@ public class ChequeAccount extends BaseAccount implements Withdrawable,
 	 *            Amount to subtract
 	 * @return true if the operation was successful
 	 */
+	@Override
 	public boolean withdraw(double amount) {
 		// check for negative amount, available balance for charges
 		if (amount < 0 || this.balance - amount < TRANSACTION_CHARGE) {
