@@ -34,6 +34,7 @@ Deposit and withdraw check for correct input, then adjust the balance.
 
 I defined the transaction charge as a static to keep the value in one location only.
 Deposit and withdraw are similar to SavingsAccount's, but deduct the transaction charge.
+Withdraw also allows withdrawing up to the creditLimit over the balance, leaving the balance negative.
 
 TestAccounts loops over the provided list of accounts several times, checking the accounts and then performing the operations as specified.
 TestAccounts requires determining what features the Account supports. The assingnment definition suggests using the instanceof operator.

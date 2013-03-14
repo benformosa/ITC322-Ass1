@@ -15,7 +15,7 @@ public abstract class BaseAccount implements Comparable<BaseAccount> {
 	 * account number and zeroes balance.
 	 * 
 	 * @param name
-	 *            owner's name
+	 *            This account owner's name
 	 */
 	protected BaseAccount(String name) {
 		owner = name;
@@ -27,9 +27,10 @@ public abstract class BaseAccount implements Comparable<BaseAccount> {
 	 * Implements the Comparable interface, making accounts comparable through
 	 * alphabetical ordering by owner's name.
 	 */
+	@Override
 	public int compareTo(BaseAccount rhs) {
 		// use String's compareTo if the owners are not the same
-		if (! rhs.owner.equals(this.owner)) {
+		if (!rhs.owner.equals(this.owner)) {
 			return this.owner.compareTo(rhs.owner);
 		}
 		return Integer.compare(this.acctNumber, rhs.acctNumber);
@@ -46,25 +47,35 @@ public abstract class BaseAccount implements Comparable<BaseAccount> {
 	public abstract boolean deposit(double amount);
 
 	/**
-	 * Override equals to be consistent with compareTo
+	 * Returns true if the given object is the same as this object Based on
+	 * Eclipse automatically generated code.
 	 */
+	@Override
 	public boolean equals(Object rhs) {
-		// equal if it is the same reference
 		if (this == rhs) {
 			return true;
 		}
-
-		// not equal if it is not a BaseAccount
+		if (rhs == null) {
+			return false;
+		}
 		if (!(rhs instanceof BaseAccount)) {
 			return false;
 		}
-
-		// we can now safely cast to BaseAccount
-		BaseAccount BArhs = (BaseAccount) rhs;
-
-		// compare all attributes
-		return BArhs.owner.equals(this.owner) && BArhs.balance == this.balance
-				&& BArhs.acctNumber == this.acctNumber;
+		BaseAccount other = (BaseAccount) rhs;
+		if (acctNumber != other.acctNumber) {
+			return false;
+		}
+		if (Double.compare(this.balance, other.balance) != 0) {
+			return false;
+		}
+		if (owner == null) {
+			if (other.owner != null) {
+				return false;
+			}
+		} else if (!owner.equals(other.owner)) {
+			return false;
+		}
+		return true;
 	}
 
 	/**
@@ -72,6 +83,7 @@ public abstract class BaseAccount implements Comparable<BaseAccount> {
 	 * 
 	 * @return String representation of this object
 	 */
+	@Override
 	public String toString() {
 		return Double.toString(this.balance);
 	}

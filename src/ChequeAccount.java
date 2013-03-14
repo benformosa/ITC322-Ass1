@@ -87,8 +87,8 @@ public class ChequeAccount extends BaseAccount implements Withdrawable,
 	 */
 	@Override
 	public boolean withdraw(double amount) {
-		// check for negative amount, available balance for charges
-		if (amount < 0 || this.balance - amount < TRANSACTION_CHARGE) {
+		// check for negative amount, available balance for charges including creditLimit
+		if (amount < 0 || this.balance + this.creditLimit - amount < TRANSACTION_CHARGE) {
 			return false;
 		}
 
